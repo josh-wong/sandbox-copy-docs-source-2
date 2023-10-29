@@ -17,7 +17,7 @@ jobs:
       - name: Push updates to the Vale style guide in the  `sandbox-copy-docs-source-2` repo to this repo.
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.VALE }}
+          GITHUB_TOKEN: ${{ secrets.VALE }}
         with:
           source_file: ".vale.ini" # Vale configuration file to sync from
           # source_file: "vale" # Vale style guide folder to sync from
