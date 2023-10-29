@@ -20,7 +20,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.VALE }}
         with:
           source_file: ".vale.ini" # Vale configuration file to sync from
-          # source_file: "vale" # Vale style guide folder to sync from
           destination_repo: "josh-wong/sandbox-copy-docs-destination" # Target repo
           destination_folder: "" # Folder to sync to
           destination_branch_create: "sandbox-copy-docs-source-2/update-vale-style-guide"
