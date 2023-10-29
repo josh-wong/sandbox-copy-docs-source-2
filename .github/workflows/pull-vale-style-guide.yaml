@@ -33,7 +33,7 @@ jobs:
       - name: Move Vale files to destination
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-          cp -r vale .vale.ini
+          cp -r vale .vale.ini /
 
       - name: Configure git
         if: steps.check_changes.outputs.has_changes == 'true'
