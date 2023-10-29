@@ -28,7 +28,7 @@ jobs:
         # Set the echo output variable based on changes
         run: |
           git diff --quiet HEAD -- vale .vale.ini sandbox-copy-docs-source-2
-          echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          echo "has_changes=true" >> "$VALE_OUTPUT"
             
       - name: Move Vale files to destination
         if: steps.check_changes.outputs.has_changes == 'true'
