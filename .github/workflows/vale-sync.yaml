@@ -17,11 +17,11 @@ jobs:
       - name: Push updates to the Vale style guide in the  `sandbox-copy-docs-source-2` repo to this repo.
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
-          VALE: ${{ secrets.VALE }}
+          GITHUB_TOKEN: ${{ secrets.VALE_TOKEN }}
         with:
           source_file: ".vale.ini" # Vale configuration file to sync from
           destination_repo: "josh-wong/sandbox-copy-docs-destination" # Target repo
-          destination_folder: "" # Folder to sync to
+          destination_folder: "/" # Folder to sync to
           destination_branch_create: "sandbox-copy-docs-source-2/update-vale-style-guide"
           user_name: "josh-wong"
           commit_message: "Sync Vale style guide from original repo"
