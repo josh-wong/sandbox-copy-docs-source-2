@@ -1,0 +1,29 @@
+# Workflow needed to sync docs from the original repository to product docs repo
+name: 🔄 Sync Vale style guide from original repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Sync the contents of the Vale style guide and its configuration file to this repo.
+      - name: Push updates to the Vale style guide in the  `sandbox-copy-docs-source-2` repo to this repo.
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.VALE }}
+        with:
+          source_file: ".vale.ini" # Vale configuration file to sync from
+          # source_file: "vale" # Vale style guide folder to sync from
+          destination_repo: "josh-wong/sandbox-copy-docs-destination" # Target repo
+          destination_folder: "" # Folder to sync to
+          destination_branch_create: "sandbox-copy-docs-source-2/update-vale-style-guide"
+          user_name: "josh-wong"
+          commit_message: "Sync Vale style guide from original repo"
+          use_rsync: rsync -avh
